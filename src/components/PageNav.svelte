@@ -1,6 +1,14 @@
-<aside>
-  <h1>MailBurner</h1>
-  <nav class="bg-red-500">
-    test
-  </nav>
+<script>
+  import NavLink from "./NavLink.svelte";
+</script>
+
+<aside class="bg-gray-100 m-4 p-4 rounded-xl flex flex-col gap-4">
+  <NavLink path="/" icon="home" />
+  <hr class="border-gray-400" />
+  <NavLink path="/mailboxes" icon="inboxes" />
+  <NavLink path="/flows" icon="flow" />
+  <NavLink path="/users" icon="users" />
+  <NavLink path="/settings" icon="settings" />
+  <hr class="border-gray-400" />
+  <NavLink path="/logout" icon="logout" />
 </aside>

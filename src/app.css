@@ -1,2 +1,26 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
+
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/roboto_regular_variable.ttf') format('ttf');
+    font-weight: 100 900; /* Weight range */
+    font-stretch: 75% 125%; /* Width range */
+    font-display: swap;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/roboto_italic_variable.ttf') format('ttf');
+    font-weight: 100 900; /* Weight range */
+    font-stretch: 75% 125%; /* Width range */
+    font-display: swap;
+    font-style: italic;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}

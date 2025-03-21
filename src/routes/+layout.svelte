@@ -4,9 +4,9 @@
 	let { children } = $props();
 </script>
 
-<div>
+<div class="flex h-screen">
   <PageNav />
-  <main>
+  <main class="py-4 px-16">
     {@render children()}
   </main>
 </div>
