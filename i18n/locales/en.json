@@ -1,0 +1,59 @@
+{
+  "aside": {
+    "currentMailbox": "Mailbox",
+    "nav": {
+      "dashboard": "Dashboard",
+      "folders": "Folders",
+      "logs": "Logs",
+      "settings": "Settings",
+      "logout": "Logout"
+    }
+  },
+  "pages": {
+    "login": {
+      "inputEmail": "Email",
+      "inputPassword": "Password",
+      "btnLogin": "Login",
+      "textRegister": "Don't have an account yet?",
+      "linkRegister": "Create a new account"
+    },
+    "settings": {
+      "mailboxes": {
+        "tabName": "Mailboxes",
+        "btnNewConnection": "New connection",
+        "inputName": "Name",
+        "connectionSettings": {
+          "title": "Connection settings",
+          "imap": {
+            "selectServerType": "Server type",
+            "inputHost": "Host",
+            "inputPort": "Port",
+            "inputUsername": "Username",
+            "inputPassword": "Password",
+            "toggleTls": "Use TLS"
+          }
+        },
+        "btnSave": "Save",
+        "btnDelete": "Delete mailbox"
+      },
+      "account": {
+        "tabName": "Account",
+        "account": {
+          "title": "Account",
+          "inputName": "Name",
+          "inputEmail": "Email",
+          "inputLanguage": "Language",
+          "btnSave": "Save settings"
+        },
+        "password": {
+          "title": "Password",
+          "inputOldPassword": "Old password",
+          "inputNewPassword": "New password",
+          "inputNewPasswordConfirm": "New password (Confirm)",
+          "btnSave": "Change password"
+        },
+        "btnAccountDelete": "Delete account"
+      }
+    }
+  }
+}
