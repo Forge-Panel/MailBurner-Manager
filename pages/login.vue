@@ -18,13 +18,15 @@ const { logoUrl } = useLogo();
     </v-card-subtitle>
     <v-divider/>
     <v-card-text class="pa-4">
-      <v-text-field label="Email" prepend-icon="i-mdi:user"></v-text-field>
-      <v-text-field label="Password" prepend-icon="i-mdi:password"></v-text-field>
-      <v-btn color="green-lighten-1" prepend-icon="i-mdi:send">Login</v-btn>
+      <v-text-field :label="$t('pages.login.inputEmail')" prepend-icon="i-mdi:user"></v-text-field>
+      <v-text-field :label="$t('pages.login.inputPassword')" prepend-icon="i-mdi:password"></v-text-field>
+      <div class="d-flex justify-end">
+        <v-btn color="green-lighten-1" prepend-icon="i-mdi:send">{{ $t('pages.login.btnLogin') }}</v-btn>
+      </div>
     </v-card-text>
     <v-divider/>
     <v-card-text class="pa-4">
-      <p>Don't have an account yet? Create a <a href="/">new account</a></p>
+      <p>{{ $t('pages.login.textRegister') }} <a href="/">{{ $t('pages.login.linkRegister') }}</a></p>
     </v-card-text>
   </v-card>
 </template>
