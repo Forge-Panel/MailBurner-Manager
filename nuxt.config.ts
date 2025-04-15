@@ -9,12 +9,9 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@nuxtjs/i18n',
     '@nuxt/eslint',
-    '@nuxt/icon',
-    '@nuxt/fonts',
     '@nuxt/test-utils',
     'vuetify-nuxt-module',
-    '@vueuse/nuxt',
-    '@nuxtjs/i18n'
+    '@vueuse/nuxt'
   ],
 
   app: {
@@ -26,9 +23,6 @@ export default defineNuxtConfig({
   },
 
   vuetify: {
-    moduleOptions: {
-      /* module specific options */
-    },
     vuetifyOptions: {
       theme: {
         defaultTheme: 'dark',
@@ -45,7 +39,10 @@ export default defineNuxtConfig({
     locales: [
       { code: 'en', name: 'English', file: 'en.json' },
       { code: 'nl', name: 'Nederlands', file: 'nl.json' },
-    ]
+    ],
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
   },
 
   runtimeConfig: {

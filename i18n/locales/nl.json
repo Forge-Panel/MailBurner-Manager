@@ -1,4 +1,12 @@
 {
+  "$vuetify.stepper.next": "Volgende",
+  "$vuetify.stepper.prev": "Vorige",
+  "forms": {
+    "btnSubmit": "Versturen",
+    "btnClose": "Sluiten",
+    "btnNext": "Volgende",
+    "btnPrev": "Vorige"
+  },
   "aside": {
     "currentMailbox": "Mailbox",
     "nav": {
@@ -9,6 +17,57 @@
       "logout": "Uitloggen"
     }
   },
+  "settings": {
+    "mailboxes": {
+      "tabName": "Mailboxes",
+      "create": {
+        "title": "Nieuwe verbinding maken",
+        "btnSave": "Opslaan",
+        "step": {
+          "1": {
+            "title": "Naam & Type",
+            "inputName": "Naam",
+            "selectConnectionType": "Verbinding type"
+          },
+          "2": {
+            "title": "Verbinding configuratie",
+            "btnTestConnection": "Test connection",
+            "imap": {
+              "inputHostname": "Hostnaam",
+              "inputPort": "Poort",
+              "inputUsername": "Gebruikersnaam",
+              "inputPassword": "Wachtwoord",
+              "toggleTls": "Gebruik TLS"
+            }
+          },
+          "3": {
+            "title": "Bevestiging"
+          }
+        }
+      },
+      "btnNewConnection": "Nieuwe verbinding",
+      "btnSave": "Opslaan",
+      "btnDelete": "Verwijder mailbox"
+    },
+    "account": {
+      "tabName": "Account",
+      "account": {
+        "title": "Account",
+        "inputName": "Naam",
+        "inputEmail": "Email",
+        "inputLanguage": "Taal",
+        "btnSave": "Opslaan"
+      },
+      "password": {
+        "title": "Wachtwoord",
+        "inputOldPassword": "Oud wachtwoord",
+        "inputNewPassword": "Nieuw wachtwoord",
+        "inputNewPasswordConfirm": "Nieuw wachtwoord (Bevestiging)",
+        "btnSave": "Wachtwoord veranderen"
+      },
+      "btnAccountDelete": "Account verwijderen"
+    }
+  },
   "pages": {
     "login": {
       "inputEmail": "Email",
@@ -16,44 +75,6 @@
       "btnLogin": "Inloggen",
       "textRegister": "Nog geen account?",
       "linkRegister": "Maak een nieuw account"
-    },
-    "settings": {
-      "mailboxes": {
-        "tabName": "Mailboxes",
-        "btnNewConnection": "Nieuwe verbinding",
-        "inputName": "Naam",
-        "connectionSettings": {
-          "title": "Verbinding instellingen",
-          "imap": {
-            "selectServerType": "Server type",
-            "inputHost": "Hostnaam",
-            "inputPort": "Poort",
-            "inputUsername": "Gebruikersnaam",
-            "inputPassword": "Wachtwoord",
-            "toggleTls": "Gebruik TLS"
-          }
-        },
-        "btnSave": "Opslaan",
-        "btnDelete": "Verwijder mailbox"
-      },
-      "account": {
-        "tabName": "Account",
-        "account": {
-          "title": "Account",
-          "inputName": "Naam",
-          "inputEmail": "Email",
-          "inputLanguage": "Taal",
-          "btnSave": "Opslaan"
-        },
-        "password": {
-          "title": "Wachtwoord",
-          "inputOldPassword": "Oud wachtwoord",
-          "inputNewPassword": "Nieuw wachtwoord",
-          "inputNewPasswordConfirm": "Nieuw wachtwoord (Bevestiging)",
-          "btnSave": "Wachtwoord veranderen"
-        },
-        "btnAccountDelete": "Account verwijderen"
-      }
     }
   }
 }
