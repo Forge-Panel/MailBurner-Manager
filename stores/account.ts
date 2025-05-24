@@ -1,6 +1,8 @@
 import {defineStore} from "pinia"
 
 export const useAccountStore = defineStore('account', () => {
+    const [showMenu, toggleMenu] = useToggle(true);
+
     const currentTheme = useState('accountTheme', () => 'system')
     const availableThemes = computed(() => [
         { title: 'Light', value: 'light' },
@@ -21,5 +23,5 @@ export const useAccountStore = defineStore('account', () => {
         })
     })
 
-    return {currentTheme, availableThemes, currentLocale, availableLocales, setLocale}
+    return {showMenu, toggleMenu, currentTheme, availableThemes, currentLocale, availableLocales, setLocale}
 })

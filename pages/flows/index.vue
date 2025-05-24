@@ -29,14 +29,13 @@ const flows = useState('flows', () => [
           </v-list-item-title>
           <template #append>
             <v-menu>
-              <template v-slot:activator="{ props }">
+              <template #activator="{ props }">
                 <v-btn
                     icon="i-mdi:dots-vertical"
                     size="small"
                     v-bind="props"
                     variant="text"
-                >
-                </v-btn>
+                />
               </template>
               <v-list>
                 <v-list-item prepend-icon="i-mdi:rename" title="Rename" @click="console.log('test')"/>

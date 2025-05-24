@@ -6,9 +6,9 @@ export default function useLogo() {
 
   const logoUrl = computed(() => {
     if (theme.name.value === 'dark') {
-      return '/logo/forge_dark.svg'
+      return '/img/logo/forge_dark.svg'
     } else {
-      return '/logo/forge_light.svg'
+      return '/img/forge_light.svg'
     }
   })
 

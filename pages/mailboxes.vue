@@ -1,10 +1,11 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
   <v-card>
-    Dashboard page
+    <v-card-text>
+      <MailboxNewConnection />
+    </v-card-text>
   </v-card>
 </template>
 
