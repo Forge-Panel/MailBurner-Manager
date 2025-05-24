@@ -28,6 +28,7 @@
     <v-list density="compact" nav>
       <v-list-item :title="$t('aside.nav.dashboard')" prepend-icon="i-mdi:view-dashboard" to="/" title="Dashboard" value="dashboard" />
       <v-list-item :title="$t('aside.nav.folders')" prepend-icon="i-mdi:folder" to="/folders" title="Folders" value="folder" />
+      <v-list-item :title="$t('aside.nav.flows')" prepend-icon="i-mdi:source-branch" to="/flows" title="Flows" value="flows" />
       <v-list-item :title="$t('aside.nav.logs')" prepend-icon="i-mdi:text-long" to="/logs" title="Logs" value="logs" />
     </v-list>
     <template #append>

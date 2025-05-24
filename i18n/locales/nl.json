@@ -12,6 +12,7 @@
     "nav": {
       "dashboard": "Dashboard",
       "folders": "Mappen",
+      "flows": "flows",
       "logs": "Logs",
       "settings": "Instellingen",
       "logout": "Uitloggen"

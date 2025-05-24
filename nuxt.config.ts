@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   vuetify: {
     vuetifyOptions: {
       theme: {
-        defaultTheme: 'dark',
+        defaultTheme: 'light',
       },
       icons: {
         defaultSet: 'unocss-mdi'
