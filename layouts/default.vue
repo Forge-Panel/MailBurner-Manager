@@ -1,3 +1,25 @@
+<script setup lang="ts">
+const accountStore = useAccountStore()
+const theme = useTheme()
+const preferredDark = usePreferredDark()
+
+watchEffect(() => {
+  console.log(accountStore.currentTheme)
+  console.log(preferredDark.value)
+  switch (accountStore.currentTheme) {
+    case 'light':
+      theme.global.name.value = 'light';
+      break;
+    case 'dark':
+      theme.global.name.value = 'dark';
+      break;
+    default:
+      theme.global.name.value = preferredDark.value ? 'dark' : 'light';
+      break;
+  }
+})
+</script>
+
 <template>
   <v-app>
     <v-layout>

@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils',
     'vuetify-nuxt-module',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@pinia/nuxt'
   ],
 
   app: {
@@ -47,7 +48,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      version: '0.1'
+      version: '0.2'
     }
   }
 })

@@ -1,6 +1,8 @@
 {
   "$vuetify.stepper.next": "Next",
   "$vuetify.stepper.prev": "Previous",
+  "$vuetify.open": "Open",
+  "$vuetify.close": "Close",
   "forms": {
     "btnSubmit": "Submit",
     "btnClose": "Close",
@@ -56,6 +58,7 @@
         "title": "Account",
         "inputName": "Name",
         "inputEmail": "Email",
+        "inputTheme": "Theme",
         "inputLanguage": "Language",
         "btnSave": "Save settings"
       },

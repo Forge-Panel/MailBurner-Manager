@@ -60,12 +60,10 @@ const items = ref<folder[]>([
       <v-treeview
         expand-icon="i-mdi:menu-right"
         collapse-icon="i-mdi:menu-down"
-        open-on-click
         :items="items"
       >
-        <template v-slot:prepend="{ item, isOpen }">
-          {{ item.icon === folderIcon.folder }}
-          <v-icon v-if="item.icon === folderIcon.folder" :icon="isOpen ? 'i-mdi:folder-open' : 'i-mdi:folder'"></v-icon>
+        <template #prepend="{ item, isOpen }">
+          <v-icon v-if="item.icon === folderIcon.folder" :icon="isOpen ? 'i-mdi:folder-open' : 'i-mdi:folder'"/>
           <v-icon v-else :icon="item.icon" />
         </template>
       </v-treeview>
