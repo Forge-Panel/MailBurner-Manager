@@ -20,7 +20,7 @@
     <v-list density="compact" nav>
       <v-list-item :title="$t('aside.nav.dashboard')" prepend-icon="i-mdi:view-dashboard" to="/" title="Dashboard" />
       <v-list-item :title="$t('aside.nav.folders')" prepend-icon="i-mdi:folder" to="/folders" title="Folders" />
-      <v-list-item :title="$t('aside.nav.flows')" prepend-icon="i-mdi:source-branch" to="/flows" title="Flows" />
+      <v-list-item :title="$t('aside.nav.rules')" prepend-icon="i-mdi:order-alphabetical-ascending" to="/rules" title="Rules" />
       <v-list-item :title="$t('aside.nav.logs')" prepend-icon="i-mdi:text-long" to="/logs" title="Logs" />
     </v-list>
     <template #append>

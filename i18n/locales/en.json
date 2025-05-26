@@ -21,39 +21,33 @@
     "nav": {
       "dashboard": "Dashboard",
       "folders": "Folders",
-      "flows": "Flows",
+      "rules": "Rules",
       "logs": "Logs"
     }
   },
   "mailboxes": {
-    "create": {
-      "title": "Create new connection",
-      "btnSave": "Opslaan",
-      "step": {
-        "1": {
-          "title": "Name & Type",
-          "inputName": "Name",
-          "selectConnectionType": "Connection type"
-        },
-        "2": {
-          "title": "Connection configuration",
-          "btnTestConnection": "Test connection",
-          "imap": {
-            "inputHostname": "Host",
-            "inputPort": "Port",
-            "inputUsername": "Username",
-            "inputPassword": "Password",
-            "toggleTls": "Use TLS"
-          }
-        },
-        "3": {
-          "title": "Confirm"
+    "newConnection": {
+      "title": "New Mail Connection",
+      "steps": {
+        "1": "Start",
+        "2": "Choose provider",
+        "3": "Connect",
+        "4": "Finish"
+      },
+      "btnShow": "New Connection",
+      "btnCancel": "Cancel",
+      "inputName": "Connection Name",
+      "providersSetup": {
+        "imap": {
+          "inputHostname": "Host",
+          "inputPort": "Port",
+          "inputUsername": "Username",
+          "inputPassword": "Password",
+          "toggleTls": "Use TLS",
+          "btnTestConnection": "Test connection"
         }
       }
-    },
-    "btnNewConnection": "New connection",
-    "btnSave": "Save",
-    "btnDelete": "Delete mailbox"
+    }
   },
   "settings": {
     "account": {
