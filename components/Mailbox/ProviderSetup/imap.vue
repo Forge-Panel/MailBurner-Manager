@@ -1,4 +1,7 @@
 <script setup lang="ts">
+const model = defineModel<boolean>()
+const config = defineModel<object>('config')
+
 const configImap = useState('configImap', () => {
   return {
     hostname: '',
@@ -26,9 +29,10 @@ async function testConnection() {
     body: configImap.value
   })
   
-  console.log(response)
-  
   loading.value = false
+
+  model.value = true
+  config.value = configImap.value
 }
 </script>
 

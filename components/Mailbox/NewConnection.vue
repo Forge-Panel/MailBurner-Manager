@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { defineAsyncComponent, ref } from 'vue'
 
-const {data: mailboxProviders, status, execute} = useLazyFetch('/api/mailbox/available_providers')
+const isLoading = ref(false);
 
-const showDialog = ref(false)
+// Step management
 const step = ref(1)
 
 function previousStep() {
@@ -20,9 +20,27 @@ function nextStep() {
   }
 }
 
+const allowedToNextStep = computed(() => {
+  switch(step.value) {
+    case 1:
+      return step1FormIsValid.value
+    case 2:
+      return selectedProvider.value
+    case 3:
+      return step3FormIsValid.value
+    case 4:
+      return false
+    default:
+      return true
+  }
+})
+
+// Show/hide dialog
+const showDialog = ref(false)
+
 function show() {
   execute()
-  
+
   showDialog.value = true
   step.value = 1;
 }
@@ -32,23 +50,33 @@ function close() {
   step.value = 1;
 }
 
-const loading = ref(false);
-const currentComponent = shallowRef(null)
+// Step 1 form
+const step1FormIsValid = ref(false)
+const connName = ref('')
 
-function loadProviderSetup(key: string) {
-  loading.value = true
-  
-  currentComponent.value = defineAsyncComponent(() =>
-    import((`~/components/Mailbox/ProviderSetup/${key}.vue`))
+// Step 2 Provider selection
+const {data: mailboxProviders, status, execute} = useLazyFetch('/api/mailbox/available_providers')
+const selectedProvider = ref<string | null>(null)
+const providerSetup = shallowRef(null)
+
+function selectProvider(value: string) {
+  if (selectedProvider.value === value) {
+    selectedProvider.value = null
+    providerSetup.value = null
+    return
+  }
+
+  selectedProvider.value = value
+
+  providerSetup.value = defineAsyncComponent(() =>
+      import((`~/components/Mailbox/ProviderSetup/${selectedProvider.value}.vue`))
   )
-  
-  loading.value = false
-  step.value = 3
 }
 
-function submit() {
+// Step 3 Provider config
+const step3FormIsValid = ref(false)
+const connConfig = ref<object>({})
 
-}
 </script>
 
 <template>
@@ -64,21 +92,36 @@ function submit() {
       />
     </template>
     <template #default>
-      <v-card max-width="1000" class="mx-auto" :title="$t('mailboxes.newConnection.title')" :loading="loading">
+      <v-card max-width="1000" class="mx-auto" :title="$t('mailboxes.newConnection.title')" :loading="isLoading">
         <v-card-text class="d-flex flex-wrap justify-space-between px-0">
           <v-stepper v-model="step" :items="[$t('mailboxes.newConnection.steps.1'), $t('mailboxes.newConnection.steps.2'), $t('mailboxes.newConnection.steps.3'), $t('mailboxes.newConnection.steps.4')]" flat hide-actions>
             <template #item.1>
-              <v-form validate-on="submit lazy" @submit.prevent="submit">
+              <v-form v-model="step1FormIsValid" validate-on="input lazy">
                 <v-text-field
+                  v-model="connName"
+                  :rules="[
+                    v => !!v || 'Name is required',
+                    v => (v && v.length >= 4) || 'Name must be 4 characters or more',
+                    v => (v && v.length <= 32) || 'Name must be 32 characters or less',
+                  ]"
+                  required
                   :label="$t('mailboxes.newConnection.inputName')"
                 />
               </v-form>
             </template>
-            
             <template #item.2>
               <div class="d-flex flex-wrap justify-space-between ga-4 py-4">
                 <template v-if="status === 'success'">
-                  <v-card v-for="mailboxProvider in mailboxProviders" :key="mailboxProvider.key" @click="loadProviderSetup(mailboxProvider.key)">
+                  <v-card
+                      v-for="mailboxProvider in mailboxProviders"
+                      :key="mailboxProvider.key"
+                      variant="flat"
+                      :class="{
+                        'pa-2': selectedProvider === mailboxProvider.key,
+                        'ma-2': selectedProvider !== mailboxProvider.key
+                      }"
+                      :color="selectedProvider === mailboxProvider.key ? 'primary' : undefined"
+                      @click="selectProvider(mailboxProvider.key)">
                     <v-img
                       color="surface-variant"
                       class="mx-auto"
@@ -99,8 +142,8 @@ function submit() {
             </template>
 
             <template #item.3>
-              <template v-if="currentComponent">
-                <component :is="currentComponent" />
+              <template v-if="providerSetup">
+                <component :is="providerSetup" v-model="step3FormIsValid" v-model:config="connConfig" />
               </template>
               <template v-else>
                 Failed to load...
@@ -108,13 +151,15 @@ function submit() {
             </template>
 
             <template #item.4>
-              <v-card title="Step Three" flat>...</v-card>
+              <v-card title="Step Three" flat>
+                {{ connConfig }}
+              </v-card>
             </template>
           </v-stepper>
         </v-card-text>
         <v-card-actions>
           <v-btn :text="$t('$vuetify.stepper.prev')" :disabled="step <= 1" @click="previousStep()" />
-          <v-btn :text="$t('$vuetify.stepper.next')" class="mr-auto" @click="nextStep()" />
+          <v-btn :text="$t('$vuetify.stepper.next')" :disabled="!allowedToNextStep" class="mr-auto" @click="nextStep()" />
           <v-btn :text="$t('mailboxes.newConnection.btnCancel')" @click="close()" />
         </v-card-actions>
       </v-card>
