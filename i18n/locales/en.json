@@ -26,6 +26,11 @@
     }
   },
   "mailboxes": {
+    "deleteConnection": {
+      "title": "Delete Mail Connection",
+      "btnSend": "Delete",
+      "btnCancel": "Cancel"
+    },
     "newConnection": {
       "title": "New Mail Connection",
       "steps": {
@@ -35,6 +40,7 @@
         "4": "Finish"
       },
       "btnShow": "New Connection",
+      "btnFinish": "Finish",
       "btnCancel": "Cancel",
       "inputName": "Connection Name",
       "providersSetup": {

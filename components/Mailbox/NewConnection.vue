@@ -77,6 +77,19 @@ function selectProvider(value: string) {
 const step3FormIsValid = ref(false)
 const connConfig = ref<object>({})
 
+async function finishSetup() {
+  const res = await $fetch('/api/mailbox/new', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: {
+      name: connName.value,
+      type: selectedProvider.value,
+      config: connConfig.value
+    }
+  });
+}
 </script>
 
 <template>
@@ -160,6 +173,7 @@ const connConfig = ref<object>({})
         <v-card-actions>
           <v-btn :text="$t('$vuetify.stepper.prev')" :disabled="step <= 1" @click="previousStep()" />
           <v-btn :text="$t('$vuetify.stepper.next')" :disabled="!allowedToNextStep" class="mr-auto" @click="nextStep()" />
+          <v-btn :text="$t('mailboxes.newConnection.btnFinish')" :disabled="step !== 4" @click="finishSetup()" />
           <v-btn :text="$t('mailboxes.newConnection.btnCancel')" @click="close()" />
         </v-card-actions>
       </v-card>

@@ -5,6 +5,7 @@
   <v-card>
     <v-card-text>
       <MailboxNewConnection />
+      <MailboxReadAll />
     </v-card-text>
   </v-card>
 </template>

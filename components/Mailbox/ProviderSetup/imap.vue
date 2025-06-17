@@ -21,7 +21,7 @@ function submit() {
 async function testConnection() {
   loading.value = true
   
-  const response = await $fetch('/api/mailbox/provider/imap/test_connection', {
+  await $fetch('/api/mailbox/provider/imap/test_connection', {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
