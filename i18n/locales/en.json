@@ -26,8 +26,13 @@
     }
   },
   "mailboxes": {
+    "readAll": {
+      "noResults": "No mailbox connections found.",
+      "error": "Something went wrong fetching mailbox connections."
+    },
     "deleteConnection": {
       "title": "Delete Mail Connection",
+      "text": "Are you sure you want to delete mailbox connection '{name}'?",
       "btnSend": "Delete",
       "btnCancel": "Cancel"
     },
@@ -45,6 +50,10 @@
       "inputName": "Connection Name",
       "providersSetup": {
         "imap": {
+          "hostname": "Hostname",
+          "port": "Port",
+          "username": "Username",
+          "tls": "Use TLS",
           "inputHostname": "Host",
           "inputPort": "Port",
           "inputUsername": "Username",

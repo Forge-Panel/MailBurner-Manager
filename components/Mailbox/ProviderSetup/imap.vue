@@ -12,32 +12,24 @@ const configImap = useState('configImap', () => {
   }
 })
 
-const loading = ref(false);
-
-function submit() {
-  loading.value = true
-}
-
-async function testConnection() {
-  loading.value = true
-  
-  await $fetch('/api/mailbox/provider/imap/test_connection', {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: configImap.value
-  })
-  
-  loading.value = false
-
+watchEffect(() => {
+  model.value = false
+  if (configImap.value.hostname === '') {
+    return
+  }
+  if (configImap.value.username === '') {
+    return
+  }
+  if (configImap.value.password === '') {
+    return
+  }
   model.value = true
   config.value = configImap.value
-}
+})
 </script>
 
 <template>
-  <v-form validate-on="submit lazy" @submit.prevent="submit">
+  <v-form>
     <v-text-field
       v-model="configImap.hostname"
       :label="$t('mailboxes.newConnection.providersSetup.imap.inputHostname')"
@@ -59,7 +51,6 @@ async function testConnection() {
       v-model="configImap.tls"
       :label="$t('mailboxes.newConnection.providersSetup.imap.toggleTls')"
     />
-    <v-btn :text="$t('mailboxes.newConnection.providersSetup.imap.btnTestConnection')" @click="testConnection" />
   </v-form>
 </template>
 

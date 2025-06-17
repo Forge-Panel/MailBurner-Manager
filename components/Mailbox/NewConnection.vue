@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { defineAsyncComponent, ref } from 'vue'
 
+const { t } = useI18n()
+const mailboxStore = useMailboxStore()
+
 const isLoading = ref(false);
 
 // Step management
@@ -48,6 +51,14 @@ function show() {
 function close() {
   showDialog.value = false
   step.value = 1;
+  
+  reset()
+}
+
+function reset() {
+  connName.value = ''
+  selectedProvider.value = null
+  connConfig.value = {}
 }
 
 // Step 1 form
@@ -75,20 +86,37 @@ function selectProvider(value: string) {
 
 // Step 3 Provider config
 const step3FormIsValid = ref(false)
-const connConfig = ref<object>({})
+const connConfig = useState<Record<string, string | number | boolean | null>>('connConfig', () => {return {}})
+
+const configMapped = computed(() => {
+  const output = []
+  
+  for (const key in connConfig.value) {
+    if (key === 'password') {
+      continue
+    }
+    
+    const keyTranslated = t(`mailboxes.newConnection.providersSetup.${selectedProvider.value}.${key}`)
+    
+    output.push({
+      title: `${keyTranslated}: ${connConfig.value[key]}`
+    });
+  }
+  return output
+})
 
 async function finishSetup() {
-  const res = await $fetch('/api/mailbox/new', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: {
-      name: connName.value,
-      type: selectedProvider.value,
-      config: connConfig.value
-    }
-  });
+  if (!selectedProvider.value) {
+    return
+  }
+  
+  await mailboxStore.createNewMailbox({
+    name: connName.value,
+    type: selectedProvider.value,
+    config: connConfig.value
+  })
+  
+  showDialog.value = false
 }
 </script>
 
@@ -109,7 +137,7 @@ async function finishSetup() {
         <v-card-text class="d-flex flex-wrap justify-space-between px-0">
           <v-stepper v-model="step" :items="[$t('mailboxes.newConnection.steps.1'), $t('mailboxes.newConnection.steps.2'), $t('mailboxes.newConnection.steps.3'), $t('mailboxes.newConnection.steps.4')]" flat hide-actions>
             <template #item.1>
-              <v-form v-model="step1FormIsValid" validate-on="input lazy">
+              <v-form v-model="step1FormIsValid" @submit.prevent="() => {if (allowedToNextStep) nextStep()}">
                 <v-text-field
                   v-model="connName"
                   :rules="[
@@ -164,8 +192,8 @@ async function finishSetup() {
             </template>
 
             <template #item.4>
-              <v-card title="Step Three" flat>
-                {{ connConfig }}
+              <v-card>
+                <v-list :items="configMapped"/>
               </v-card>
             </template>
           </v-stepper>

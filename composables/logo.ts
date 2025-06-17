@@ -8,7 +8,7 @@ export default function useLogo() {
     if (theme.name.value === 'dark') {
       return '/img/logo/forge_dark.svg'
     } else {
-      return '/img/forge_light.svg'
+      return '/img/logo/forge_light.svg'
     }
   })
 
