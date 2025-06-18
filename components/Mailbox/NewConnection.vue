@@ -66,7 +66,7 @@ const step1FormIsValid = ref(false)
 const connName = ref('')
 
 // Step 2 Provider selection
-const {data: mailboxProviders, status, execute} = useLazyFetch('/api/mailbox/available_providers')
+const {data: mailboxProviders, status, execute } = useLazyFetch('/api/mailbox/available_providers')
 const selectedProvider = ref<string | null>(null)
 const providerSetup = shallowRef(null)
 

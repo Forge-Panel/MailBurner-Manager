@@ -50,7 +50,7 @@ export const useMailboxStore = defineStore('mailbox', () => {
     return mailbox
   }
 
-  async function updateMailbox(id: number, mailboxBody: Mailbox) {
+  async function updateMailbox(id: number, mailboxBody: MailboxBase) {
     const mailbox = await $fetch<Mailbox>(`/api/mailboxes/${id}`, {
       method: 'PUT',
       headers: {
@@ -76,6 +76,14 @@ export const useMailboxStore = defineStore('mailbox', () => {
     return Array.from(mailboxesMap.value.values())
   })
 
+  function getMailboxById(id: number) {
+    if (!mailboxesMap.value.has(id)) {
+      return null
+    }
 
-  return {mailboxes, createNewMailbox, readAllMailboxes, fetchMailbox, updateMailbox, deleteMailbox}
+    return mailboxesMap.value.get(id)
+  }
+
+
+  return {mailboxes, getMailboxById, createNewMailbox, readAllMailboxes, fetchMailbox, updateMailbox, deleteMailbox}
 });

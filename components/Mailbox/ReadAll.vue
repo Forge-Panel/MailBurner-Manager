@@ -17,7 +17,7 @@ const {mailboxes} = storeToRefs(mailboxStore)
       <v-list-item-title>{{ item.name }}</v-list-item-title>
       <v-list-item-subtitle>{{ item.type }}</v-list-item-subtitle>
       <template #append>
-        <v-btn icon="i-mdi:edit" size="small" class="mr-4" />
+        <MailboxUpdateConnection :id="item.id" />
         <MailboxDeleteConnection :id="item.id" />
       </template>
     </v-list-item>

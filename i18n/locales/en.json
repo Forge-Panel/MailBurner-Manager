@@ -3,6 +3,8 @@
   "$vuetify.stepper.prev": "Previous",
   "$vuetify.open": "Open",
   "$vuetify.close": "Close",
+  "$vuetify.loading": "Loading",
+  "$vuetify.noDataText": "No data.",
   "forms": {
     "btnSubmit": "Submit",
     "btnClose": "Close",
@@ -18,6 +20,7 @@
   },
   "aside": {
     "currentMailbox": "Mailbox",
+    "currentMailboxPlaceholder": "Select a mailbox...",
     "nav": {
       "dashboard": "Dashboard",
       "folders": "Folders",
@@ -27,13 +30,19 @@
   },
   "mailboxes": {
     "readAll": {
-      "noResults": "No mailbox connections found.",
+      "noResults": "No mailbox connections yet.",
       "error": "Something went wrong fetching mailbox connections."
     },
     "deleteConnection": {
       "title": "Delete Mail Connection",
       "text": "Are you sure you want to delete mailbox connection '{name}'?",
       "btnSend": "Delete",
+      "btnCancel": "Cancel"
+    },
+    "updateConnection": {
+      "title": "Edit Mail Connection",
+      "text": "Change the config of mailbox connection '{name}'.",
+      "btnSend": "Edit",
       "btnCancel": "Cancel"
     },
     "newConnection": {

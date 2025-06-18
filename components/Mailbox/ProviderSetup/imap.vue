@@ -1,15 +1,27 @@
 <script setup lang="ts">
 const model = defineModel<boolean>()
-const config = defineModel<object>('config')
+const config = defineModel<{
+  hostname: string,
+  port: number,
+  username: string,
+  password: string,
+  tls: boolean
+}>('config')
 
-const configImap = useState('configImap', () => {
-  return {
-    hostname: '',
-    port: 993,
-    username: '',
-    password: '',
-    tls: true
+const configImap = ref({
+  hostname: '',
+  port: 993,
+  username: '',
+  password: '',
+  tls: true
+})
+
+onMounted(() => {
+  if (!config.value) {
+    return
   }
+  
+  configImap.value = config.value
 })
 
 watchEffect(() => {

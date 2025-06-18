@@ -5,18 +5,22 @@ const {id} = defineProps<{
 
 const mailboxStore = useMailboxStore()
 
-const { data, status, error } = useAsyncData('mailboxFetch', () => mailboxStore.fetchMailbox(id))
+const { data: mailbox, status, execute, clear } = useLazyAsyncData(() => mailboxStore.fetchMailbox(id))
 
 // Show/hide dialog
 const showDialog = ref(false)
 const isLoading = ref(false)
 
-function show() {
+async function show() {
   showDialog.value = true
+  
+  await execute()
 }
 
 function close() {
   showDialog.value = false
+  
+  clear()
 }
 
 async function sendDelete() {
@@ -33,18 +37,18 @@ async function sendDelete() {
   <v-dialog v-model="showDialog">
     <template #activator>
       <v-btn
-          color="red"
           icon="i-mdi:trash"
           size="small"
+          variant="flat"
           @click="show()"
       />
     </template>
-    <template v-if="data && status === 'success'" #default>
+    <template v-if="mailbox && status === 'success'" #default>
       <v-card
         max-width="1000"
         class="mx-auto"
         :title="$t('mailboxes.deleteConnection.title')"
-        :text="$t('mailboxes.deleteConnection.text', data)"
+        :text="$t('mailboxes.deleteConnection.text', mailbox)"
         :loading="isLoading">
         <v-card-actions>
           <v-btn color="red" :text="$t('mailboxes.deleteConnection.btnSend')" @click="sendDelete()" />
@@ -67,7 +71,3 @@ async function sendDelete() {
     </template>
   </v-dialog>
 </template>
-
-<style scoped>
-
-</style>
