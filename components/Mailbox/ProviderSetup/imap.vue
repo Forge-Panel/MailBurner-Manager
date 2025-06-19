@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 const model = defineModel<boolean>()
 const config = defineModel<{
   hostname: string,
@@ -44,24 +46,26 @@ watchEffect(() => {
   <v-form>
     <v-text-field
       v-model="configImap.hostname"
-      :label="$t('mailboxes.newConnection.providersSetup.imap.inputHostname')"
+      :label="t('mailboxes.newConnection.providersSetup.imap.inputHostname')"
     />
     <v-number-input
       v-model="configImap.port"
       control-variant="hidden"
-      :label="$t('mailboxes.newConnection.providersSetup.imap.inputPort')"
+      :label="t('mailboxes.newConnection.providersSetup.imap.inputPort')"
     />
     <v-text-field
       v-model="configImap.username"
-      :label="$t('mailboxes.newConnection.providersSetup.imap.inputUsername')"
+      :label="t('mailboxes.newConnection.providersSetup.imap.inputUsername')"
     />
     <v-text-field
       v-model="configImap.password"
-      :label="$t('mailboxes.newConnection.providersSetup.imap.inputPassword')"
+      type="password"
+      :label="t('mailboxes.newConnection.providersSetup.imap.inputPassword')"
     />
     <v-switch
       v-model="configImap.tls"
-      :label="$t('mailboxes.newConnection.providersSetup.imap.toggleTls')"
+      :color="configImap.tls ? 'primary' : undefined"
+      :label="t('mailboxes.newConnection.providersSetup.imap.toggleTls')"
     />
   </v-form>
 </template>

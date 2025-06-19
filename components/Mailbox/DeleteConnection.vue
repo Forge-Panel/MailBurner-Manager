@@ -39,7 +39,7 @@ async function sendDelete() {
       <v-btn
           icon="i-mdi:trash"
           size="small"
-          variant="flat"
+          variant="text"
           @click="show()"
       />
     </template>

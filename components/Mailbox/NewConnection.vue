@@ -124,10 +124,8 @@ async function finishSetup() {
   <v-dialog v-model="showDialog">
     <template #activator>
       <v-btn
-          class="mb-8"
           color="primary"
           prepend-icon="i-mdi:plus"
-          variant="flat"
           :text="$t('mailboxes.newConnection.btnShow')"
           @click="show()"
       />

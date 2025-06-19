@@ -28,6 +28,19 @@
       "logs": "Logs"
     }
   },
+  "folders": {
+    "edit": {
+      "title": "Edit folder",
+      "text": "Type a description of the folder, for the AI to get better context what should be inside it.",
+      "inputPrompt": "Prompt",
+      "toggleEnabled": "Enabled",
+      "toggleEnabledHelper": "Does the AI have access to this folder? if not, it will be completely ignored.",
+      "toggleFolderScanning": "Scan this folder",
+      "toggleFolderScanningHelper": "Start scanning messages from this folder.",
+      "btnSend": "Edit",
+      "btnClose": "Close"
+    }
+  },
   "mailboxes": {
     "readAll": {
       "noResults": "No mailbox connections yet.",

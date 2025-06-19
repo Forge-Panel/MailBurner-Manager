@@ -68,7 +68,7 @@ async function sendUpdate() {
       <v-btn
         icon="i-mdi:edit"
         size="small"
-        variant="flat"
+        variant="text"
         @click="show()"
       />
     </template>
@@ -85,7 +85,7 @@ async function sendUpdate() {
           </template>
         </v-card-text>
         <v-card-actions>
-          <v-btn :disabled="!isValid" color="blue" :text="$t('mailboxes.updateConnection.btnSend')" @click="sendUpdate()" />
+          <v-btn :disabled="!isValid" color="primary" :text="$t('mailboxes.updateConnection.btnSend')" @click="sendUpdate()" />
           <v-btn :text="$t('mailboxes.updateConnection.btnCancel')" @click="close()" />
         </v-card-actions>
       </v-card>
@@ -98,7 +98,7 @@ async function sendUpdate() {
           <v-skeleton-loader type="list-item-two-line" width="300"/>
         </v-card-text>
         <v-card-actions>
-          <v-btn disabled color="blue" :text="$t('mailboxes.updateConnection.btnSend')" />
+          <v-btn disabled color="primary" :text="$t('mailboxes.updateConnection.btnSend')" />
           <v-btn disabled :text="$t('mailboxes.updateConnection.btnCancel')" />
         </v-card-actions>
       </v-card>

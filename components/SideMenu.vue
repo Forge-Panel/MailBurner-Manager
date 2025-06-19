@@ -37,10 +37,10 @@
     />
     <v-divider />
     <v-list density="compact" nav>
-      <v-list-item :disabled="!currentMailbox" :title="$t('aside.nav.dashboard')" prepend-icon="i-mdi:view-dashboard" to="/" />
+<!--      <v-list-item :disabled="!currentMailbox" :title="$t('aside.nav.dashboard')" prepend-icon="i-mdi:view-dashboard" to="/" />-->
       <v-list-item :disabled="!currentMailbox" :title="$t('aside.nav.folders')" prepend-icon="i-mdi:folder" to="/folders" />
-      <v-list-item :disabled="!currentMailbox" :title="$t('aside.nav.rules')" prepend-icon="i-mdi:order-alphabetical-ascending" to="/rules" />
-      <v-list-item :disabled="!currentMailbox" :title="$t('aside.nav.logs')" prepend-icon="i-mdi:text-long" to="/logs" />
+<!--      <v-list-item :disabled="!currentMailbox" :title="$t('aside.nav.rules')" prepend-icon="i-mdi:order-alphabetical-ascending" to="/rules" />-->
+<!--      <v-list-item :disabled="!currentMailbox" :title="$t('aside.nav.logs')" prepend-icon="i-mdi:text-long" to="/logs" />-->
     </v-list>
     <template #append>
       <v-divider />

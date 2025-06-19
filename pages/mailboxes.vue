@@ -2,14 +2,12 @@
 </script>
 
 <template>
-  <v-card>
+  <v-card title="Mailbox connections" text="Manage mailbox connections to connect MailBurner with your email services.">
     <v-card-text>
-      <MailboxNewConnection />
       <MailboxReadAll />
     </v-card-text>
+    <v-card-actions>
+      <MailboxNewConnection />
+    </v-card-actions>
   </v-card>
 </template>
-
-<style scoped>
-
-</style>
